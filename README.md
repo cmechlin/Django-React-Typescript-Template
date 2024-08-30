@@ -9,6 +9,14 @@ This served a few purposes
 
 ## Getting Started
 
+### Admin Panel
+
+(obviously don't leave it this way, you need to change this)
+
+Username: superuser
+
+Password: Pa55word
+
 ## How to use it
 
 ### Adding a Django App
@@ -39,6 +47,30 @@ add include import to django.urls
 add path to urls pattern to point to other urls.py file
 
 	path('<app path>/', include('<app name>.urls'))
+```
+
+### Creating Models
+
+add your model to your app models.py, such as the following
+
+```
+from django.db import models
+
+class Pet(models.Model):
+    name = models.CharField(max_length=100)
+    species = models.CharField(max_length=100)
+    breed = models.CharField(max_length=100)
+    age = models.IntegerField()
+
+    def __str__(self):
+        return self.name
+```
+
+Anytime models are changed you will then need to migrate this to the database
+
+```
+python manage.py makemigrations
+python manage.py migrate
 ```
 
 ## If you want to build this entire thing manually
