@@ -1,8 +1,13 @@
 from rest_framework import viewsets
-from .models import Pet
-from .serializer import PetSerializer
+from .models import Department, Employee
+from .serializer import DepartmentSerializer, EmployeeSerializer
 
 
-class PetViewSet(viewsets.ModelViewSet):
-    queryset = Pet.objects.all()
-    serializer_class = PetSerializer
+class DepartmentViewSet(viewsets.ModelViewSet):
+    queryset = Department.objects.all()
+    serializer_class = DepartmentSerializer
+
+
+class EmployeeViewSet(viewsets.ModelViewSet):
+    queryset = Employee.objects.all()
+    serializer_class = EmployeeSerializer

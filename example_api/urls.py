@@ -1,10 +1,9 @@
-from django.urls import path
+from django.urls import path, include
 from rest_framework import routers
-from .views import PetViewSet
+from .views import DepartmentViewSet, EmployeeViewSet
 
 router = routers.DefaultRouter()
-router.register(r"pets", PetViewSet)
+router.register(r"departments", DepartmentViewSet)
+router.register(r"employees", EmployeeViewSet)
 
-urlpatterns = [
-    path("pets/", PetViewSet.as_view({"get": "list"})),
-]
+urlpatterns = [path("", include(router.urls))]  # PetViewSet.as_view({"get": "list"})),
